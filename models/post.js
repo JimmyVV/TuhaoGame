@@ -68,14 +68,17 @@ Post.getTyrant = function(name,callback){
             cb(err,col)
          });
    	},
-   	function(col,cb){  //查找输入姓名对应的
-         var rand = Math.random();
-          col.findOne({name:{$nin:name}})
-         .then(function(item){                        
-            cb(null,item);
-         });  		
-   	}      
-   	],function(err,data){
+      function(col,cb){
+         col.count({name:{$nin:name}}).then(function(count){            
+              var ran = Math.floor(count*Math.random());
+               col.find({name:{$nin:name}}).skip(ran).limit(1)
+               .toArray().then(function(docs){
+                  console.log(docs[0]);
+                  cb(null,docs[0]);
+               })
+         });
+      }  
+   	],function(err,data){         
    		mongodb.close();          
    		callback(err,data);
    	});

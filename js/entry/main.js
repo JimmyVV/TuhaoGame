@@ -11,9 +11,10 @@ require.config({　　
         'focus': "../entry/modules/input-focus",
         'deferred': 'deferred',
         'touch': 'touch',
-        'event': 'event',
+        'event':"event",
         'callbacks': 'callbacks',
-        'utils':"../entry/modules/utils"
+        'utils': "../entry/modules/utils",
+        'textFormat':"../entry/modules/textFormat"
     },
     map: {
         '*': {
@@ -38,11 +39,11 @@ require.config({　　
             exports: '$',
             deps: ['zepto']
         },
-        'touch': {
+        "event":{
             exports: '$',
             deps: ['zepto']
         },
-        'event': {
+        'touch': {
             exports: '$',
             deps: ['zepto']
         },
@@ -52,17 +53,15 @@ require.config({　　
         }
     }
 });
-require(['underscore', 'zepto', 'backbone', 'async', 'focus', 'event', 'deferred', 'callbacks', 'touch','utils'], function(_, $, Backbone, async) {　　
+require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred', 'callbacks', 'touch', 'utils','textFormat'], function(_, $, Backbone, async) {　　
     Pathurl = {
         getTyrant: '/getTyrant'
     };　
-    var textWidth = function(text) {
-        var sensor = $('<pre>' + text + '</pre>').css({
-            display: 'none'
-        }); //因为pre标签,可以保留空格和换行符,
-        $('body').append(sensor);
-        var width = sensor.width();
-        sensor.remove();
+    function textWidth(text) {        
+         var sensor = $('<pre>'+ text +'</pre>').css({display: 'inline'});   //因为pre标签,可以保留空格和换行符,
+        $('body').append(sensor); 
+        var width = sensor.width();        
+        sensor.remove(); 
         return width;
     };
     //创建对应的变量
@@ -99,7 +98,8 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus', 'event', 'deferred
                 obj = {
                     name: data.name,
                     title: data.title,
-                    scripts: data.scripts
+                    scripts: data.scripts,
+                    src:data.src
                 };
             if (len === 4) {
                 this.tyrant.shift();
@@ -126,14 +126,14 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus', 'event', 'deferred
         info: $('.i-index #i-prompt'),
         confirm_btn: $('#i-confirm-btn'), //确认提交按钮
         events: {
-            'keyup .i-testname': 'limitLengteh',
+            'keyup #i-testname': 'limitLength',
             'tap #i-confirm-btn': 'jumpTo'
         },
         render: function() {
             var _this = this;
             this.$el.show();
             $('body').addClass('i-index-show');
-            this.$el.find('.i-testname').inputFocus("输入测试姓名");
+            this.$el.find('.i-testname').inputFocus("输入测试姓名");           
             setTimeout(function() {
                 _this.setAnimation();
             }, 10);
@@ -151,8 +151,7 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus', 'event', 'deferred
             var text = this.$el.find('#i-testname').val(),
                 len = textWidth(text),
                 event = e,
-                _this = this;
-
+                _this = this;                
             if (text === "输入测试姓名") {
                 _this.info.text("姓名不能为空~");
                 return false
@@ -198,10 +197,22 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus', 'event', 'deferred
         render: function() {
             var imgs = ['img/index/confirm.png',
                 'img/author.png',
-                'img/index/logo-s00a82f3d7e.png',
                 'img/coin.png',
                 'img/index/thigh.png',
-                'img/test/test-sce34044a80.png'
+                'img/test/test-s4cdb85fdf3.png',
+                'img/index/logo/mayun.png',
+                'img/index/logo/liuQD.png',
+                'img/index/logo/liJC.png',
+                'img/index/logo/Bill.png',
+                'img/index/logo/wangSC.png',
+                'img/index/logo/building1.png',
+                'img/index/logo/building2.png',
+                'img/index/logo/building3.png',
+                'img/index/confirm.png',
+                'img/index/thigh.png',
+                'img/index/logo/title.png',
+                'img/test/others.png',
+                'img/test/follow.png'
             ]; //设置图片路径
             this.preload(imgs);
         },
@@ -281,8 +292,8 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus', 'event', 'deferred
             this.figure.attr('src', data.src);
             par.addTyrant(data); //存储获得的tyrant;    
         },
-        ajax:function(url, opts) {
-           sendAjax(url,opts);
+        ajax: function(url, opts) {
+            sendAjax(url, opts);
         },
         /*
          * 发送获取土豪信息
@@ -296,24 +307,24 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus', 'event', 'deferred
                 tyrant_name = tyrant.map(function(val) { //生成已经获得的土豪信息
                     return val.name; //返回姓名组成的数组
                 }),
-                    url = Pathurl.getTyrant + "?name=" + name + "&len=" + len;
-                    _this.ajax(url,{
-                        method:"post",
-                        data:{
-                            "name":tyrant_name
-                        },
-                        contentType:"application/json",
-                        success:function(data){
-                            _this.changeInfo(JSON.parse(data));
-                        },
-                        error:function(data){
-                            var  con = confirm("网络问题~~需要刷新吗?");
-                            if(con){
-                                window.location.href="/";
-                            }
-                        }
+                url = Pathurl.getTyrant + "?name=" + name + "&len=" + len;
+            _this.ajax(url, {
+                method: "post",
+                data: {
+                    "name": tyrant_name
+                },
+                contentType: "application/json",
+                success: function(data) {
+                    _this.changeInfo(JSON.parse(data));
+                },
+                error: function(data) {
+                    var con = confirm("网络问题~~需要刷新吗?");
+                    if (con) {
+                        window.location.href = "/";
+                    }
+                }
 
-                    });
+            });
             // $.post(url, {
             //     "name": []
             // }, function(res) {
@@ -362,25 +373,27 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus', 'event', 'deferred
         el: $('.r-result'),
         first: $('.r-first,g.r-first'),
         first_text: $('.r-first-text').find('span'),
-        first_img: $('.r-first-text').find('img'),
+        first_img: $('.r-first').find('.figure'),
         second: $('.r-second,g.r-second'),
         second_text: $('.r-second-text').find('span'),
-        second_img: $('.r-second-text').find('img'),
+        second_img: $('.r-second').find('figure'),
         third: $('.r-third,g.r-third'),
         third_text: $('.r-third-text').find('span'),
-        third_img: $('.r-third-text').find('img'),
+        third_img: $('.r-third').find('figure'),
         fourth: $('.r-fourth,g.r-fourth'),
         fourth_text: $('.r-fourth-text').find('span'),
-        fourth_img: $('.r-fourth-text').find('img'),
+        fourth_img: $('.r-fourth').find('figure'),
+        result_name:$('#r-name'),
         events: {
-            'tap #r-again-btn': 'showAgain'
+            'tap #r-again-btn': 'backIndex'
         },
         render: function() {
             this.$el.show();
-            this.showTyrant();
+            this.fillName(); //填入姓名
+            this.showTyrant();  //显示相关土豪信息
         },
-        showAgain: function() {
-            router.navigate("/test", {
+        backIndex: function() {
+            router.navigate("/", {
                 trigger: true,
                 replace: true
             });
@@ -400,9 +413,13 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus', 'event', 'deferred
             return array;
 
         },
+        fillName:function(){            
+            this.result_name.text(par.get('name'));
+
+        },
         showTyrant: function() {
             var tyrant = this.shuffle(par.getTyrant()),
-                _this = this,
+                _this = this,                
                 len = tyrant.length;
             switch (len) {
                 case 1:
@@ -451,11 +468,16 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus', 'event', 'deferred
                     $ele = _this.fourth;
                     break;
             }
-            text.text(tyrant.scripts);
+            console.info(tyrant.scripts+ order);
+            console.log(new textFormat(tyrant.scripts,order).content)
+            text.html(new textFormat(tyrant.scripts,order).content);    //处理输入的Content
             img.attr('src', tyrant.src);
+
             setTimeout(function() {
-                $ele.addClass('now');
-            }, 200);
+                $ele.each(function(){                    
+                    this.classList.add('now');
+                })                
+            }, 1000);
         },
         hide: function() {
             this.$el.hide();

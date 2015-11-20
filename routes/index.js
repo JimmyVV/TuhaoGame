@@ -61,10 +61,9 @@ module.exports = function(app) {
                         /*
                         * 获得土豪的信息内容
                         */ 
-                        
+                      
                         Post.getTyrant(tyrant_name,function(err, data) {
-                        	//获得单个data   
-                                         
+                        	//获得单个data                               
                             cb(err,data);
                         })
                     }
