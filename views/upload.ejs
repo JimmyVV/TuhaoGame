@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link rel="stylesheet" type="text/css" href="/styles/upload.css">
+    <title>壕做友</title>
+</head>
+
+<body>
+    <div class="frame">
+        <p><span>姓名</span>
+            <input class="name" type="text">
+        </p>
+        <p><span>标题</span>
+            <input class="title" type="text" maxLength="14">
+        </p>
+        <p><span class="scripts-title">文案</span>
+            <textarea class="scripts" name="scripts" id="" cols="30" rows="10" maxLength="31"></textarea>
+        </p>
+        <p>
+            <span>头像</span>
+            <!-- <input id="fileupload" type="file">
+                <button id="submit">上 传</button> -->
+            <form class="form-horizontal" enctype='multipart/form-data' method='post' action='javascript:;' role="form" id="frmUploadFile">
+                <div class="form-group">                    
+                    <div class="col-sm-4">
+                        <input type="file" name="img" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <button class="btn btn-primary">上传</button>
+                        <span class="help-inline" id="spanMessage">选择文件，并上传</span>
+                    </div>
+                </div>
+            </form>
+        </p>
+        <p>
+            <button id="save">保存</button>
+        </p>
+    </div>
+    <script type="text/javascript" src="/js/lib/require.js" data-main="/js/entry/upload"></script>
+</body>
+
+</html>

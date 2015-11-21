@@ -393,10 +393,7 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
             this.showTyrant();  //显示相关土豪信息
         },
         backIndex: function() {
-            router.navigate("/", {
-                trigger: true,
-                replace: true
-            });
+           window.location.href="/";
         },
         shuffle: function(array) { //乱序算法
             var m = array.length,

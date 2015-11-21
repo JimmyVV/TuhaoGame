@@ -83,4 +83,26 @@ Post.getTyrant = function(name,callback){
    		callback(err,data);
    	});
 }
+Post.prototype.saveData = function(tyrant,callback) {
+   async.waterfall([
+      function(cb){  //打开数据库
+         mongodb.open(function(err,db){
+            cb(err,db);
+         });
+      },
+      function(db,cb){  //打开col
+         db.collection('posts',function(err,col){
+            cb(err,col)
+         });
+      },
+      function(col,cb){  //处理doc
+         col.insert(tyrant,function(err){
+            cb(err,true);
+         })
+      },
+      ],function(err,mark){
+         mongodb.close();
+         callback(err,mark);
+      });
+};
 
