@@ -358,10 +358,22 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
             this.trans.removeClass('now');
         },
         testAgain: function() {
-            var _this = this;
+            var _this = this,
+                audio =  _this.music[0];
             _this.showTran();
             _this.sendAjax();
-           _this.music[0].play();
+            if(!!(document.createElement('video').canPlayType)){
+                if (audio.readyState == 4) {  // android会走此逻辑
+                    audio.play(); 
+                } else {    // iOS走此逻辑
+                    audio.addEventListener("canplaythrough", function() {
+                        // @todo
+                    }, false);
+                    audio.load();    // 需要主动触发下，不然不会加载
+                    audio.play();  
+                }
+                  
+            }
             setTimeout(function() {
                 _this.hideTran();
             }, 3000);
