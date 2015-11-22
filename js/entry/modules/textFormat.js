@@ -2,7 +2,7 @@
 
 
 
-    var first_arr = [8,4,5,5],
+    var first_arr = [8,5,6,5],
         second_arr = [6,4,5,5],
         third_arr = [4,5,6,6],
         four_arr = [7,5,5,5];

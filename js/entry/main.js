@@ -102,7 +102,7 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
                     src:data.src
                 };
             if (len === 4) {
-                this.tyrant.shift();
+                tyrant.shift();
             }
             tyrant.push(obj);
 
