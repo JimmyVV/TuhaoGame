@@ -14,7 +14,8 @@ require.config({　　
         'event':"event",
         'callbacks': 'callbacks',
         'utils': "../entry/modules/utils",
-        'textFormat':"../entry/modules/textFormat"
+        'textFormat':"../entry/modules/textFormat",
+        'redic':"broRedict"
     },
     map: {
         '*': {
@@ -53,10 +54,11 @@ require.config({　　
         }
     }
 });
-require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred', 'callbacks', 'touch', 'utils','textFormat'], function(_, $, Backbone, async) {　　
+require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred', 'callbacks', 'touch', 'utils','textFormat','redic'], function(_, $, Backbone, async) {　　
     Pathurl = {
         getTyrant: '/getTyrant'
     };　
+    Redict('/redict');
     function textWidth(text) {        
          var sensor = $('<pre>'+ text +'</pre>').css({display: 'inline'});   //因为pre标签,可以保留空格和换行符,
         $('body').append(sensor); 

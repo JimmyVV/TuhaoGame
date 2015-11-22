@@ -81,6 +81,11 @@ module.exports = function(app) {
                 res.json(data);
             })
         });
+//提醒用户，使用手机端;
+    app.route('/redict')
+        .get(function(req,res){
+            res.render('redict');
+        })
     var upload = multer({
         dest: "./upload/",
         rename: function(fileldname, filename) {
