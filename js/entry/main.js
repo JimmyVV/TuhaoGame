@@ -291,7 +291,8 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
         changeInfo: function(data) {
             this.title.text(data.title);
             this.scripts.text(data.scripts);
-            this.figure.attr('src', data.src);
+            var src = data.src.replace('.png',"1.png");
+            this.figure.attr('src', src);
             par.addTyrant(data); //存储获得的tyrant;    
         },
         ajax: function(url, opts) {
