@@ -156,7 +156,8 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
                 _this.info.text("姓名不能为空~");
                 return false
             }
-            if (len > 68) {
+            
+            if (len > 61) {
                 //超出输入的长度，做出提示                                           
                 _this.promptShow();
                 return false;
