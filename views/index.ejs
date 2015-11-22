@@ -13,9 +13,33 @@
     <link rel="icon" href="img/favicon.ico">
     <link rel="apple-touch-icon" href="img/favicon.ico" sizes="57x57">
     <link href="./styles/index.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+    Redict('/redict');
+    function Redict(url){
+            if(!checkBroswer()){
+            window.location.href=url;  //不是移动端
+            }
+        }
+        function checkBroswer(){
+            var sUserAgent = navigator.userAgent.toLowerCase();
+             bIsIpad = sUserAgent.match(/ipad/i) == "ipad",
+             bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os",
+             bIsMidp = sUserAgent.match(/midp/i) == "midp",
+             bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4",
+             bIsUc = sUserAgent.match(/ucweb/i) == "ucweb",
+             bIsAndroid = sUserAgent.match(/android/i) == "android",
+             bIsCE = sUserAgent.match(/windows ce/i) == "windows ce",
+             bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile",
+             bIsMobile = !!sUserAgent.match(/applewebkit.*mobile.*/); //是否为移动终
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM || bIsMobile) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
 </head>
-<script type="text/template" id="index-template">
-</script>
+
 
 <body class="i-index-show">
     <article class="l-loading">
@@ -139,7 +163,7 @@
         <img class="author" src="img/author.png" />
     </article>
     <script type="text/javascript" src="js/lib/require.js" data-main="js/entry/main"></script>
-  
+
     <script src="http://s4.cnzz.com/stat.php?id=1256816088&web_id=1256816088" language="JavaScript"></script>
 </body>
 
