@@ -15,7 +15,6 @@ require.config({　　
         'callbacks': 'callbacks',
         'utils': "../entry/modules/utils",
         'textFormat':"../entry/modules/textFormat"
-        
     },
     map: {
         '*': {
