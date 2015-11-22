@@ -170,6 +170,7 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
         setAnimation: function() {
             var ele = this.$el.find('.logo-mayun,.logo-liuQD,.logo-liJC,.logo-Bill,.logo-wangSC,.i-words,.words-right,.words-left,.words-rich,.logo-building1,.logo-building2,.logo-building3');
             ele.addClass('now');
+            setTimeout(function(){$('body').addClass('now');},2000)  
         },
         isValidate: function(sign) {
             return sign;
@@ -275,7 +276,8 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
         name: $('#t-name'), //姓名
         title: $('#t-title'), //标题
         scripts: $('#t-scripts'), //脚本
-        trans: $('.t-transition,#test-first,#test-second,#t-message'),
+        trans: $('.t-transition,#test-first,#test-second,#t-message,.t-layer'),  
+        music:$('#loading'),     
         events: {
             'tap #t-again-btn': 'testAgain',
             'tap #t-produce-btn': 'obtainResult'
@@ -358,6 +360,7 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
             var _this = this;
             _this.showTran();
             _this.sendAjax();
+           _this.music[0].play();
             setTimeout(function() {
                 _this.hideTran();
             }, 3000);

@@ -14,7 +14,7 @@
 </script>
 
 <body class="i-index-show">
-     <article class="l-loading">
+    <article class="l-loading">
         <section class="l-title">
             <img class="l-money" src="img/coin.png" alt="money">
             <span class="l-multi">x</span>
@@ -26,7 +26,7 @@
             <div class="l-cover"></div>
         </section>
     </article>
-      <article class="i-index">
+    <article class="i-index">
         <header class="i-portrait">
             <div class="i-figure-frame">
                 <img src="img/index/logo/mayun.png" alt="typrant" name="mayun" class="logo-mayun">
@@ -54,10 +54,12 @@
         <img class="author" src="./img/author.png" />
     </article>
     <article class="t-test" id="t-test">
-        <div class="t-transition" id="t-transition">
-            <div><i class="t-first-row test-first" id="test-first"></i></div>
-            <div><i class="t-second-row test-second" id="test-second"></i></div>
-            <span class="t-message" id="t-message">双方互为好友，现在可以开始聊天了.</span>
+        <div class="t-layer">
+            <div class="t-transition" id="t-transition">
+                <div><i class="t-first-row test-first" id="test-first"></i></div>
+                <div><i class="t-second-row test-second" id="test-second"></i></div>
+                <span class="t-message" id="t-message">双方互为好友，现在可以开始聊天了.</span>
+            </div>
         </div>
         <section class="t-board">
             <header class="t-header">
@@ -74,12 +76,6 @@
                 <div class="t-content">
                     <strong class="t-title" id="t-name"></strong>
                     <p class="t-scripts" id="t-scripts">
-                        借给正在上厕所的<br/>
-                        借给正在上厕所的<br/>
-                        借给正在上厕所的<br/>
-                        借给正在上厕所的<br/>
-                        借给正在上厕所的<br/>
-                        借给正在上厕所的<br/>
                     </p>
                 </div>
                 <div class="t-money">
@@ -87,6 +83,9 @@
                     <i alt="money" class="t-bucket test-money"></i>
                     <i alt="star" class="t-star2 test-star2"></i>
                 </div>
+                <audio id="loading">
+                    <source src="musics/music.mp3" type="audio/mpeg" />
+                </audio>
             </article>
         </section>
         <br/>
@@ -136,6 +135,7 @@
         <img class="author" src="img/author.png" />
     </article>
     <script type="text/javascript" src="js/lib/require.js" data-main="js/entry/main"></script>
+    <script src="http://s4.cnzz.com/stat.php?id=1256816088&web_id=1256816088" language="JavaScript"></script>
 </body>
 
 </html>
