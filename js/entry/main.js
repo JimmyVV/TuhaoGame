@@ -380,13 +380,13 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
         first_img: $('.r-first').find('.figure'),
         second: $('.r-second,g.r-second'),
         second_text: $('.r-second-text').find('span'),
-        second_img: $('.r-second').find('figure'),
+        second_img: $('.r-second').find('.figure'),
         third: $('.r-third,g.r-third'),
         third_text: $('.r-third-text').find('span'),
-        third_img: $('.r-third').find('figure'),
+        third_img: $('.r-third').find('.figure'),
         fourth: $('.r-fourth,g.r-fourth'),
         fourth_text: $('.r-fourth-text').find('span'),
-        fourth_img: $('.r-fourth').find('figure'),
+        fourth_img: $('.r-fourth').find('.figure'),
         result_name:$('#r-name'),
         events: {
             'tap #r-again-btn': 'backIndex'
