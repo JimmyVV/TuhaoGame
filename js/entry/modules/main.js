@@ -3836,8 +3836,7 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
                 'img/index/thigh.png',
                 'img/index/logo/title.png',
                 'img/test/others.png',
-                'img/test/follow.png',
-                'img/tuhao_share.png'
+                'img/test/follow.png'
             ]; //设置图片路径
             this.preload(imgs);
         },

@@ -5,7 +5,7 @@
 baseUrl: '../lib',   //相对于appDir，代表要查找js文件的起始文件夹，下文所有文件路径的定义都是基于这个baseUrl的
 
 dir:"../abc",
-name:"../main",
+name:"../main",  //主模块,main.js
 
 optimizeCss: 'standard', 
 
