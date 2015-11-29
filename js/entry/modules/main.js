@@ -3900,7 +3900,8 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
         title: $('#t-title'), //标题
         scripts: $('#t-scripts'), //脚本
         trans: $('.t-transition,#test-first,#test-second,#t-message,.t-layer'),  
-        music:$('#loading'),     
+        music:$('#loading'), 
+        pageTitle:$("title"),
         events: {
             'tap #t-again-btn': 'testAgain',
             'tap #t-produce-btn': 'obtainResult'
@@ -3913,6 +3914,7 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
         },
         changeInfo: function(data) {
             this.title.text(data.title);
+            this.pageTitle.text(data.title);
             this.scripts.text(data.scripts);
             var src = data.src.replace('.png',"1.png");
             this.figure.attr('src', src);
