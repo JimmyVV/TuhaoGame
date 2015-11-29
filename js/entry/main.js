@@ -3900,7 +3900,7 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
         title: $('#t-title'), //标题
         scripts: $('#t-scripts'), //脚本
         trans: $('.t-transition,#test-first,#test-second,#t-message,.t-layer'),  
-        music:$('#loading'), 
+        music:$('#loading'),
         pageTitle:$("title"),
         events: {
             'tap #t-again-btn': 'testAgain',
@@ -3909,12 +3909,13 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
         render: function() {
             var name = par.get('name');
             this.name.text(name);
+            this.pageTitle.text("深藏不露，原来"+name+"居然有这样的土豪朋友.");
             this.sendAjax();
             this.$el.show();
         },
         changeInfo: function(data) {
             this.title.text(data.title);
-            this.pageTitle.text(data.title);
+            // this.pageTitle.text(data.title);
             this.scripts.text(data.scripts);
             var src = data.src.replace('.png',"1.png");
             this.figure.attr('src', src);
