@@ -4110,8 +4110,7 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
             console.info(tyrant.scripts+ order);
             console.log(new textFormat(tyrant.scripts,order).content)
             text.html(new textFormat(tyrant.scripts,order).content);    //处理输入的Content
-            img.attr('src', tyrant.src);
-
+            img.attr('src', tyrant.src).addClass('show');
             setTimeout(function() {
                 $ele.each(function(){                    
                     this.classList.add('now');
