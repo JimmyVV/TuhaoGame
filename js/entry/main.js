@@ -3823,7 +3823,7 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
                 'img/author.png',
                 'img/coin.png',
                 'img/index/thigh.png',
-                'img/test/test-s4cdb85fdf3.png',
+                'img/test/test-sab53686001.png',
                 'img/index/logo/mayun.png',
                 'img/index/logo/liuQD.png',
                 'img/index/logo/liJC.png',
