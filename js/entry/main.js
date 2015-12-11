@@ -4026,13 +4026,22 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
         fourth_text: $('.r-fourth-text').find('span'),
         fourth_img: $('.r-fourth').find('.figure'),
         result_name:$('#r-name'),
+        QRPage:$('.QR_code'),  //二维码验证
         events: {
-            'tap #r-again-btn': 'backIndex'
+            'tap #r-again-btn': 'backIndex',
+            'tap .r-follow-btn':'showQr',
+            'tap .QR_code':'closePage'
         },
         render: function() {
             this.$el.show();
             this.fillName(); //填入姓名
             this.showTyrant();  //显示相关土豪信息
+        },
+        showQr:function(){
+        	this.QRPage.css('display','flex');
+        },
+        closePage:function(){
+        	this.QRPage.hide();
         },
         backIndex: function() {
            window.location.href="/";
