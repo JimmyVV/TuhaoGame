@@ -15,35 +15,36 @@
     <link href="./styles/index.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
     Redict('/redict');
-    function Redict(url){
-            if(!checkBroswer()){
-            window.location.href=url;  //不是移动端
-            }
+
+    function Redict(url) {
+        if (!checkBroswer()) {
+            window.location.href = url; //不是移动端
         }
-        function checkBroswer(){
-            var sUserAgent = navigator.userAgent.toLowerCase();
-             bIsIpad = sUserAgent.match(/ipad/i) == "ipad",
-             bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os",
-             bIsMidp = sUserAgent.match(/midp/i) == "midp",
-             bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4",
-             bIsUc = sUserAgent.match(/ucweb/i) == "ucweb",
-             bIsAndroid = sUserAgent.match(/android/i) == "android",
-             bIsCE = sUserAgent.match(/windows ce/i) == "windows ce",
-             bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile",
-             bIsMobile = !!sUserAgent.match(/applewebkit.*mobile.*/); //是否为移动终
-            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM || bIsMobile) {
-                return true;
-            } else {
-                return false;
-            }
+    }
+
+    function checkBroswer() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        bIsIpad = sUserAgent.match(/ipad/i) == "ipad",
+            bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os",
+            bIsMidp = sUserAgent.match(/midp/i) == "midp",
+            bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4",
+            bIsUc = sUserAgent.match(/ucweb/i) == "ucweb",
+            bIsAndroid = sUserAgent.match(/android/i) == "android",
+            bIsCE = sUserAgent.match(/windows ce/i) == "windows ce",
+            bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile",
+            bIsMobile = !!sUserAgent.match(/applewebkit.*mobile.*/); //是否为移动终
+        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM || bIsMobile) {
+            return true;
+        } else {
+            return false;
         }
+    }
     </script>
 </head>
 
-
 <body class="i-index-show">
-<img class="share" src="img/tuhao_share.png"/>
-    <article class="l-loading">
+    <img class="share" src="img/tuhao_share.png" />
+    <!-- <article class="l-loading">
         <section class="l-title">
             <img class="l-money" src="img/coin.png" alt="money">
             <span class="l-multi">x</span>
@@ -85,8 +86,8 @@
     <article class="t-test" id="t-test">
         <div class="t-layer">
             <div class="t-transition" id="t-transition">
-                <div><img class="t-first-row" src="img/index/me.png" id="test-first"/></div>
-                <div><img class="t-second-row" src="img/index/boss.png" id="test-second"/></div>
+                <div><img class="t-first-row" src="img/index/me.png" id="test-first" /></div>
+                <div><img class="t-second-row" src="img/index/boss.png" id="test-second" /></div>
                 <span class="t-message" id="t-message">双方互为好友，现在可以开始聊天了.</span>
             </div>
         </div>
@@ -124,8 +125,8 @@
         <div class="t-produce">
             <button class="t-produce-btn" id="t-produce-btn"></button><img src="img/test/form.png" class="test-form"></div>
         <img class="author" src="img/author.png" />
-    </article>
-    <article class="r-result">
+    </article> -->
+    <article class="r-result" style="display: block;">
         <article class="r-show">
             <p class="r-first r-first-text"><span></span>
                 <i class="test-five-star first"></i></p>
@@ -158,16 +159,14 @@
         </article>
         <div class="r-again">
             <button class="r-again-btn" id="r-again-btn"></button><img src="img/test/others.png" class="test-again"></div>
-        <br/>
+        
         <div class="r-produce">
-            <a class="r-follow-btn"></a><img src="img/test/follow.png" class="test-follow"></div>
+            <button class="r-follow-btn" id="r-follow-btn"></button><img src="img/test/follow.png" class="test-follow"></div>
         <img class="author" src="img/author.png" />
-         <div class="QR_code"><img src="img/QR_code.jpg" alt="QR_code">
-    <span>长按二维码关注公众号,<br/>第500,1000,1500,2000个关注者，将获得土豪网奖励的88元现金</span></div>
+        <div class="QR-code" id="QR-code"><img src="img/QR_code.jpg" alt="QR_code"/>
+            <span>长按二维码关注公众号,<br/>第500,1000,1500,2000个关注者，将获得土豪网奖励的88元现金</span></div>
     </article>
-   
     <script type="text/javascript" src="js/lib/require.js" data-main="js/entry/main"></script>
-
     <script src="http://s4.cnzz.com/stat.php?id=1256816088&web_id=1256816088" language="JavaScript"></script>
 </body>
 

@@ -4026,11 +4026,11 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
         fourth_text: $('.r-fourth-text').find('span'),
         fourth_img: $('.r-fourth').find('.figure'),
         result_name:$('#r-name'),
-        QRPage:$('.QR_code'),  //二维码验证
+        QRPage:$('.QR-code'),  //二维码验证
         events: {
             'tap #r-again-btn': 'backIndex',
-            'tap .r-follow-btn':'showQr',
-            'tap .QR_code':'closePage'
+            'tap #r-follow-btn':'showQr',
+            'tap #QR-code':'closePage'
         },
         render: function() {
             this.$el.show();
@@ -4038,7 +4038,7 @@ require(['underscore', 'zepto', 'backbone', 'async', 'focus','event', 'deferred'
             this.showTyrant();  //显示相关土豪信息
         },
         showQr:function(){
-        	this.QRPage.css('display','flex');
+        	this.QRPage.show();
         },
         closePage:function(){
         	this.QRPage.hide();
