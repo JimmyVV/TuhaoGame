@@ -24,5 +24,9 @@
   "description": "This is my first nodeJS project",
   "main": "app.js",
   "author": "jimmy_vv",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.13.3",
+    "utility": "^1.6.0"
+  }
 }

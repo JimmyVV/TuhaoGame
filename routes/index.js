@@ -3,7 +3,9 @@ router = express.Router(),
     Post = require('../models/post'),
     async = require('async'),
     multer = require('multer'),
-    fs = require('fs');
+    fs = require('fs'),
+    utils = require('utility');
+
 module.exports = function(app) {
     app.route('/')
         .get(function(req, res) {
@@ -15,47 +17,23 @@ module.exports = function(app) {
             var name = req.query.name,
                 len = Number(req.query.len),
                 tyrant_name = req.body.name; //获取data传入的信息
-            console.log(req.body);
             //接受传来参数的长度
             if (len > 68) {
                 res.redirect('/');
                 return false;
             }
             async.waterfall([
-                function(cb) {
-                    //检测是否已经存在测试者的姓名;
-                    Post.get(name, function(err, doc) {
-
-                        if (err) {
-                            res.redirect('/');
-                            return false;
-                        }
-
-                        if (doc.length !== 0) {
-                            cb(err, true); //已经存在
-                            return false;
-                        }
-
-                        cb(err, false); //如果不存在
-
-                    })
-                },
-                //返回存在结果
-                function(mark, cb) {
-                    if (mark) { //检测存在的结果
-                        //如果存在,则直接获取tyrants
-                        cb(null, true);
-                    } else {
-                        //如果不存在，存放信息;
-                        var post = new Post(name);
-                        post.save(name, function(err, mark) {
+                function( cb) {
+                    //如果存在,则不inserrt，如果不存在则insert;
+                        Post.save(utils.md5(name), function(err, mark) {
+                            
                             if (err) {
                                 res.redirect('/');
                                 return false;
                             }
                             cb(null, mark);
                         })
-                    }
+                    // }
                 },
                 //获取tyrants;
                 function(mark, cb) {
@@ -63,17 +41,24 @@ module.exports = function(app) {
                         /*
                          * 获得土豪的信息内容
                          */
-
                         Post.getTyrant(tyrant_name, function(err, data) {
-                            //获得单个data                               
+                            //获得单个土豪信息                              
                             cb(err, data);
                         })
                     }
                 },
+                function(data, cb) {
+                    //解析土豪信息的基本格式
+                    Post.saveUser(utils.md5(name), data, function(err) {
+                        cb(err, data);
+                    })
+
+                }
 
             ], function(err, data) {
                 //如果存在错误,返回首页
-                if (err) {
+                
+                if (!err) {
                     res.redirect('./');
                     return false;
                 }
@@ -81,9 +66,9 @@ module.exports = function(app) {
                 res.json(data);
             })
         });
-//提醒用户，使用手机端;
+    //提醒用户，使用手机端;
     app.route('/redict')
-        .get(function(req,res){
+        .get(function(req, res) {
             res.render('redict');
         })
     var upload = multer({
@@ -104,7 +89,6 @@ module.exports = function(app) {
             res.render('upload');
         })
         .post(function(req, res) {
-            console.log(req.body);
             var tyrant = {
                 name: req.body.name,
                 title: req.body.title,
@@ -115,7 +99,6 @@ module.exports = function(app) {
                 res.redirect('/');
                 return;
             }
-            console.log(tyrant);
             var post = new Post(tyrant);
             post.saveData(tyrant, function(err, mark) {
                 if (err) {
@@ -124,22 +107,47 @@ module.exports = function(app) {
                 }
                 if (mark) {
                     //存储成功!
-                   res.json("ok");
-                   
+                    res.json("ok");
+
                 }
             })
-          
+
         })
+    // app.route('/getName')
+    //     .post(function(req, res) {
+    //         var data = "";
+    //         req.setEncoding('utf-8');
+    //         var name = utils.md5(req.body.name); //获取用户的数据H
+    //         Post.save(name, (err, mark) => {
+    //             if (mark) {
+    //                 res.json({
+    //                     name: name
+    //                 });
+    //             } else {
+    //                 res.json(false);
+    //             }
+    //         });
 
-    // app.route('/upload')
-    //     .get(function(req,res){
-    //         res.render();
     //     })
-    //     .post(function(req,res){
-    //        console.log(req.body);
-    //        console.log(req.files);
-
-    //     });
+    app.route('/result')
+        .get(function(req, res) {
+            var name = req.query.name;
+            res.render( "result",{name:name});
+        })
+    app.route('/getResult')
+        .get(function(req,res){
+             var name = utils.md5(req.query.name);
+             console.log(req.query.name);
+            Post.fetchTyrant(name, function(mark, arr) {
+                //获得相应的土豪信息,还要进行发送请求进行遍历。
+                console.log(`name is ${name} and mark is ${mark}`)
+                if (mark) {
+                    res.json(arr);
+                } else {
+                    res.redirect('/');
+                }
+            })
+        })
     app.route('/**')
         .get(function(req, res) {
             res.redirect('/');

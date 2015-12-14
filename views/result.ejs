@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="keyword" name="壕做友">
+    <meta name="decription" content="土豪网,我与土豪的有个约会. 找到心中的土豪">
+    <title>壕做友</title>
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/img/favicon.ico" sizes="57x57">
+    <link href="./styles/index.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+    Redict('/redict');
+
+    function Redict(url) {
+        if (!checkBroswer()) {
+            window.location.href = url; //不是移动端
+        }
+    }
+
+    function checkBroswer() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        bIsIpad = sUserAgent.match(/ipad/i) == "ipad",
+            bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os",
+            bIsMidp = sUserAgent.match(/midp/i) == "midp",
+            bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4",
+            bIsUc = sUserAgent.match(/ucweb/i) == "ucweb",
+            bIsAndroid = sUserAgent.match(/android/i) == "android",
+            bIsCE = sUserAgent.match(/windows ce/i) == "windows ce",
+            bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile",
+            bIsMobile = !!sUserAgent.match(/applewebkit.*mobile.*/); //是否为移动终
+        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM || bIsMobile) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    </script>
+</head>
+
+<body class="i-index-show">
+    <img class="share" src="img/tuhao_share.png" />
+    <article class="r-result" style="display: block;">
+        <article class="r-show">
+            <p class="r-first r-first-text"><span></span>
+                <i class="test-five-star first"></i></p>
+            <p class="r-second r-second-text"><span></span>
+                <i class="test-five-star second"></i></p>
+            <p class="r-third r-third-text"><span></span>
+                <i class="test-five-star third"></i></p>
+            <p class="r-fourth r-fourth-text"><span></span>
+                <i class="test-five-star fourth"></i></p>
+            <div class="r-first" >
+                <img class="figure" src="" />
+                <img src="img/test/board1.png" alt="" class="r-board">
+            </div>
+            <div class="r-second" >
+                <img src="" class="figure">
+                <img src="img/test/board2.png" class="r-board">
+            </div>
+            <div class="r-third" >
+                <img src="" class="figure">
+                <img src="img/test/board3.png" class="r-board">
+            </div>
+            <div class="r-fourth" >
+                <img src="" class="figure">
+                <img src="img/test/board4.png" class="r-board">
+            </div>
+            <div class="r-name-frame">
+                <span class="r-name" id="r-name"><%=name%></span>
+                <img src="/img/money.png" class="test-tyrant">
+            </div>
+        </article>
+        <div class="setLoc">
+            <div class="r-again">
+                <button class="r-again-btn" id="r-again-btn"></button><img src="img/test/others.png" class="test-again"></div>
+            <div class="r-produce">
+                <button class="r-follow-btn" id="r-follow-btn"></button><img src="img/test/follow.png" class="test-follow"></div>
+        </div>
+        <img class="author" src="img/author.png" />
+        <div class="QR-code" id="QR-code"><img src="img/QR_code.jpg" alt="QR_code" />
+            <span>长按二维码关注公众号,<br/>第500,1000,1500,2000个关注者，将获得土豪网奖励的88元现金</span></div>
+    </article>
+    <script type="text/javascript" src="js/lib/zepto.min.js"></script>
+    <script type="text/javascript" src="js/entry/result.js"></script>
+    <script src="http://s4.cnzz.com/stat.php?id=1256816088&web_id=1256816088" language="JavaScript"></script>
+</body>
+
+</html>
