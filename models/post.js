@@ -58,9 +58,9 @@ Post.saveUser = function(name,tyrant,callback){
       function(col,cb){
          //查找对应的测试者
          col.update({name:name},{$push:{tyrant:tyrant}},{insert:true})
-         .then((result)=>{
+         .then(function(result){
             cb(true,true);
-         },()=>{cb(true,true);});
+         },function(){cb(true,true);});
 
       }
    ],function(err,mark){

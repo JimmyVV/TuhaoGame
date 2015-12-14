@@ -137,10 +137,8 @@ module.exports = function(app) {
     app.route('/getResult')
         .get(function(req,res){
              var name = utils.md5(req.query.name);
-             console.log(req.query.name);
             Post.fetchTyrant(name, function(mark, arr) {
                 //获得相应的土豪信息,还要进行发送请求进行遍历。
-                console.log(`name is ${name} and mark is ${mark}`)
                 if (mark) {
                     res.json(arr);
                 } else {
