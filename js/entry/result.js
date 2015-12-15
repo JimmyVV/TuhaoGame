@@ -69,9 +69,8 @@
                 },
                 dataType: 'JSON'
             })
-
-
             $('#r-again-btn').on('tap', function() {
+                console.log("123");
                 getResult.backIndex();
             });
             $('#r-follow-btn').on('tap', function() {
@@ -133,10 +132,17 @@
                     _this.fillInfo(tyrant[2], 3);
                     _this.fillInfo(tyrant[3], 2);
                     break;
+                default:
+                      _this.fillInfo(tyrant[0], 1);
+                    _this.fillInfo(tyrant[1], 4);
+                    _this.fillInfo(tyrant[2], 3);
+                    _this.fillInfo(tyrant[3], 2);
+                break;
             }
 
         },
         fillInfo: function(tyrant, order) {
+
             var _this = this,
                 text, img, $ele;
             switch (order) {
